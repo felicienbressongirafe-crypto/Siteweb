@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>L'Histoire d'Astérix</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            background-image: url('fond.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        h1.titre {
+            font-size: 60px;
+            text-decoration: underline;
+            margin: 40px 0;
+        }
+
+        .personnages img {
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            margin: 10px;
+        }
+
+        .description {
+            max-width: 900px;
+            margin: 40px auto;
+            font-size: 22px;
+        }
+
+        a.info {
+            display: block;
+            margin: 20px;
+            font-size: 20px;
+            color: #ffd700;
+            text-align: center;
+        }
+
+        .auteur {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 60px auto;
+            font-size: 22px;
+            text-align: left;
+        }
+
+        .auteur img {
+            width: 200px;
+        }
+    </style>
+
+
+<meta charset="UTF-8">
+    <title>Connexion</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            margin: 5px 0;
+            padding: 8px;
+        }
+        button {
+            width: 50%;
+            padding: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-box">
+    <h2>Connexion</h2>
+    <input type="text" id="username" placeholder="Identifiant">
+    <input type="password" id="password" placeholder="Mot de passe">
+    <button onclick="login()">Se connecter</button>
+    <p id="error" style="color:red;"></p>
+</div>
+<script>
+    function login() {
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Identifiants autorisés (exemple)
+        if (username === "fefe" && password === "1234") {
+            localStorage.setItem("user", username);
+            window.location.href = "video.html";
+        } else {
+            document.getElementById("error").textContent = "Identifiant ou mot de passe incorrect";
+        }
+    }
+</script>
+    <h1 class="titre">L'Histoire d'Astérix</h1>
+
+    <div class="personnages">
+        <img src="asterix.png" alt="Astérix">
+        <img src="obelix.png" alt="Obélix">
+        <img src="panoramix.png" alt="Panoramix">
+        <img src="abraracourcix.png" alt="Abraracourcix">
+    </div>
+
+    <div class="description">
+        <p>
+            La série met en scène les habitants d'un petit village gaulois d'Armorique qui, en 50 av. J.-C.,
+            poursuivent seuls la lutte contre l'envahisseur grâce à une potion magique inventée par leur druide.
+        </p>
+
+        <p>
+            Astérix est une série de bande dessinée française créée le 29 octobre 1959 par René Goscinny
+            et Albert Uderzo.
+        </p>
+    </div>
+
+    <a class="info" href="https://fr.wikipedia.org/wiki/Ast%C3%A9rix" target="_blank">
+        → Cliquez ici pour plus d'informations sur la BD
+    </a>
+
+    <div class="auteur">
+        <img src="uderzo.jpg" alt="Albert Uderzo">
+        <p>
+Albert Uderzo, nom de plume d'Alberto Aleandro Uderzo, né le 25 avril 1927 à Fismes (Marne) et mort le 24 mars 2020 à Neuilly-sur-Seine (Hauts-de-Seine), est un auteur de bande dessinée français, un éditeur et un homme d'affaires.
+
+Il travaille notamment pour les journaux France-Soir et France Dimanche, et pour les magazines Tintin et Pilote. Avec Jean-Michel Charlier, il est l'auteur de la série Tanguy et Laverdure. Il crée également avec René Goscinny, les séries Oumpah-Pah et Astérix.
+
+
+<a class="info" href="https://fr.wikipedia.org/wiki/Albert_Uderzo" target="_blank">
+        → Cliquez ici pour plus d'informations sur Uderzo
+    </a>
+
+        </p>
+    </div>
+
+    <div class="auteur">
+        
+        <p>
+            René Goscinny, né le 14 août 1926 à Paris et mort le 5 novembre 1977 dans la même ville, est un scénariste de bande dessinée, journaliste, écrivain et humoriste français, également producteur, réalisateur et scénariste de films.Il est l'un des fondateurs et rédacteurs en chef de Pilote, un magazine de bande dessinée. Créateur d'Astérix avec Albert Uderzo, d'Iznogoud avec Jean Tabary, auteur du Petit Nicolas, personnage créé et dessiné par Jean-Jacques Sempé, scénariste de nombreux albums de Lucky Luke créé par Morris, il est l’un des auteurs français les plus lus au monde : l’ensemble de son œuvre représente environ 500 millions d’ouvrages vendus.
+
+<a class="info" href="https://fr.wikipedia.org/wiki/Ren%C3%A9_Goscinny" target="_blank">
+        → Cliquez ici pour plus d'informations sur Goscinny
+    </a>
+
+
+        </p>
+<img src="goscinny2.jpg" alt="René Goscinny">
+    </div>
+
+<title>Bouton vidéo</title>
+
+<style>
+  /* Style du bouton */
+  .video-btn {
+    font-size: 24px;           
+    padding: 20px 50px;        
+    background-color: #335cff; 
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .video-btn:hover {
+    background-color: #3370ff;
+  }
+
+  #videoContainer video {
+    width: 50%;    
+    height: auto;  
+    max-height: 50%; 
+ 
+  }
+
+
+  /* Conteneur vidéo caché au départ */
+  #videoContainer {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<h5>
+<button class="video-btn" onclick="ouvrirVideo()">Interview d'Albert Uderzo sur TV5 pour sa nouvelle BD "Astérix et la rentrée gauloise"</button>
+
+<div id="videoContainer">
+  <video controls>
+    <source src="video.mp4" type="video/mp4">
+    Votre navigateur ne supporte pas la vidéo.
+  </video>
+</div>
+<h4>Version 1.46 | BRESSON Félicien | 2026 | Tous droits réservés</h4>
+<script>
+  function ouvrirVideo() {
+    document.getElementById("videoContainer").style.display = "block";
+  }
+
+</script>
+</h5>
+</body>
+</html>
