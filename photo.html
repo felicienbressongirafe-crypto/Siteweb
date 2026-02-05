@@ -15,8 +15,8 @@
       min-height: 100vh;
       background: radial-gradient(circle at top, #1a1a1a, #000 70%);
       color: #fff;
-      display: grid;
-      grid-template-rows: auto 1fr auto;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -28,17 +28,21 @@
     }
 
     main {
-      display: grid;
-      grid-template-columns: 280px 1fr;
+      flex: 1;
+      display: flex;
       gap: 20px;
       padding: 20px;
+      position: relative;
     }
 
-    .buttons {
+    /* Container pour boutons et aperçu */
+    .buttons-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
       gap: 12px;
-      align-content: start;
+      flex: 1;
+      max-width: calc(100% - 520px); /* laisser 520px pour l'aperçu + marge */
+      position: relative;
     }
 
     button {
@@ -58,22 +62,16 @@
       background: linear-gradient(145deg, #2a2a2a, #141414);
     }
 
-    .viewer {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-      border-radius: 20px;
-      border: 1px solid #222;
-      padding: 10px;
-    }
-
-    img {
-      max-width: 100%;
-      max-height: 75vh;
-      border-radius: 14px;
+    /* Aperçu plus grand sur le côté */
+    .preview {
+      width: 500px;
+      height: 400px;
+      border-radius: 12px;
       object-fit: contain;
+      display: none;
+      border: 2px solid #fff;
       background: #000;
+      flex-shrink: 0;
     }
 
     footer {
@@ -83,9 +81,36 @@
       opacity: 0.6;
     }
 
-    @media (max-width: 900px) {
+    /* Overlay plein écran */
+    .fullscreen-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .fullscreen-overlay img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+    }
+
+    @media (max-width: 1200px) {
       main {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+      }
+      .preview {
+        display: none;
+      }
+      .buttons-container {
+        max-width: 100%;
       }
     }
   </style>
@@ -94,90 +119,10 @@
   <header>🖼️ Galerie photos locale</header>
 
   <main>
-    <section class="buttons">
-      <button onclick="showImage('1.jpeg')">Photo 1</button>
-     <button onclick="showImage('2.jpeg')">Photo 1</button>
-<button onclick="showImage('3.jpeg')">Photo 1</button>
-<button onclick="showImage('4.jpeg')">Photo 1</button>
-<button onclick="showImage('5.jpeg')">Photo 1</button>
-<button onclick="showImage('6.jpeg')">Photo 1</button>
-<button onclick="showImage('7.jpeg')">Photo 1</button>
-<button onclick="showImage('8.jpeg')">Photo 1</button>
-<button onclick="showImage('9.jpeg')">Photo 1</button>
-<button onclick="showImage('10.jpeg')">Photo 1</button>
-<button onclick="showImage('11jpeg')">Photo 1</button>
-<button onclick="showImage('12.jpeg')">Photo 1</button>
-<button onclick="showImage('13.jpeg')">Photo 1</button>
-<button onclick="showImage('14.jpeg')">Photo 1</button>
-<button onclick="showImage('15.jpeg')">Photo 1</button>
-<button onclick="showImage('16.jpeg')">Photo 1</button>
-<button onclick="showImage('17.jpeg')">Photo 1</button>
-<button onclick="showImage('18.jpeg')">Photo 1</button>
-<button onclick="showImage('19.jpeg')">Photo 1</button>
-<button onclick="showImage('20.jpeg')">Photo 1</button>
-<button onclick="showImage('21.jpeg')">Photo 1</button>
-<button onclick="showImage('22.jpeg')">Photo 1</button>
-<button onclick="showImage('23.jpeg')">Photo 1</button>
-<button onclick="showImage('24.jpeg')">Photo 1</button>
-<button onclick="showImage('25.jpeg')">Photo 1</button>
-<button onclick="showImage('26.jpeg')">Photo 1</button>
-<button onclick="showImage('27.jpeg')">Photo 1</button>
-<button onclick="showImage('28.jpeg')">Photo 1</button>
-<button onclick="showImage('29.jpeg')">Photo 1</button>
-<button onclick="showImage('30.jpeg')">Photo 1</button>
-<button onclick="showImage('31.jpeg')">Photo 1</button>
-<button onclick="showImage('32.jpeg')">Photo 1</button>
-<button onclick="showImage('33.jpeg')">Photo 1</button>
-<button onclick="showImage('34.jpeg')">Photo 1</button>
-<button onclick="showImage('35.jpeg')">Photo 1</button>
-<button onclick="showImage('36.jpeg')">Photo 1</button>
-<button onclick="showImage('37.jpeg')">Photo 1</button>
-<button onclick="showImage('38.jpeg')">Photo 1</button>
-<button onclick="showImage('39.jpeg')">Photo 1</button>
-<button onclick="showImage('40.jpeg')">Photo 1</button>
-<button onclick="showImage('41.jpeg')">Photo 1</button>
-<button onclick="showImage('42.jpeg')">Photo 1</button>
-<button onclick="showImage('43.jpeg')">Photo 1</button>
-<button onclick="showImage('44.jpeg')">Photo 1</button>
-<button onclick="showImage('45.jpeg')">Photo 1</button>
-<button onclick="showImage('46.jpeg')">Photo 1</button>
-<button onclick="showImage('47.jpeg')">Photo 1</button>
-<button onclick="showImage('48.jpeg')">Photo 1</button>
-<button onclick="showImage('49.jpeg')">Photo 1</button>
-<button onclick="showImage('50.jpeg')">Photo 1</button>
-<button onclick="showImage('51.jpeg')">Photo 1</button>
-<button onclick="showImage('52.jpeg')">Photo 1</button>
-<button onclick="showImage('53.jpeg')">Photo 1</button>
-<button onclick="showImage('54.jpeg')">Photo 1</button>
-<button onclick="showImage('55.jpeg')">Photo 1</button>
-<button onclick="showImage('56.jpeg')">Photo 1</button>
-<button onclick="showImage('57.jpeg')">Photo 1</button>
-<button onclick="showImage('58.jpeg')">Photo 1</button>
-<button onclick="showImage('59.jpeg')">Photo 1</button>
-<button onclick="showImage('60.jpeg')">Photo 1</button>
-<button onclick="showImage('61.jpeg')">Photo 1</button>
-<button onclick="showImage('62.jpeg')">Photo 1</button>
-<button onclick="showImage('63.jpeg')">Photo 1</button>
-<button onclick="showImage('64.jpeg')">Photo 1</button>
-<button onclick="showImage('65.jpeg')">Photo 1</button>
-<button onclick="showImage('66.jpeg')">Photo 1</button>
-<button onclick="showImage('67.jpeg')">Photo 1</button>
-<button onclick="showImage('68.jpeg')">Photo 1</button>
-<button onclick="showImage('69.jpeg')">Photo 1</button>
-<button onclick="showImage('70.jpeg')">Photo 1</button>
-<button onclick="showImage('71.jpeg')">Photo 1</button>
-<button onclick="showImage('72.jpeg')">Photo 1</button>
-<button onclick="showImage('73.jpeg')">Photo 1</button>
-<button onclick="showImage('74.jpeg')">Photo 1</button>
-<button onclick="showImage('75.jpeg')">Photo 1</button>
-<button onclick="showImage('76.jpeg')">Photo 1</button>
-<button onclick="showImage('77.jpeg')">Photo 1</button>
-<button onclick="showImage('78.jpeg')">Photo 1</button>
+    <section class="buttons-container" id="buttonsContainer">
+      <!-- Les boutons seront générés automatiquement -->
     </section>
-
-    <section class="viewer">
-      <img id="imageViewer" alt="Sélectionne une photo" />
-    </section>
+    <img class="preview" id="previewImage" alt="Aperçu" />
   </main>
 
   <footer>
@@ -185,10 +130,37 @@
   </footer>
 
   <script>
-    const imageViewer = document.getElementById('imageViewer');
+    const buttonsContainer = document.getElementById('buttonsContainer');
+    const previewImage = document.getElementById('previewImage');
 
-    function showImage(src) {
-      imageViewer.src = src;
+    // Générer automatiquement les 78 boutons
+    for (let i = 1; i <= 78; i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+
+      // Aperçu au survol
+      btn.addEventListener('mouseenter', () => {
+        previewImage.src = `${i}.jpeg`;
+        previewImage.style.display = 'block';
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        previewImage.style.display = 'none';
+      });
+
+      // Plein écran au clic
+      btn.onclick = () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'fullscreen-overlay';
+        const fullImg = document.createElement('img');
+        fullImg.src = `${i}.jpeg`;
+        overlay.appendChild(fullImg);
+        document.body.appendChild(overlay);
+
+        overlay.addEventListener('click', () => overlay.remove());
+      };
+
+      buttonsContainer.appendChild(btn);
     }
   </script>
 </body>
